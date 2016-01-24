@@ -129,8 +129,14 @@ STATICFILES_DIRS = [
 
 STATIC_URL = "/static/"
 
-
-
 LOGIN_URL = "/login/"
 LOGOUT_URL = "logout/"
 LOGIN_REDIRECT_URL = "/"
+
+DEFAULT_FROM_EMAIL = "email@email.com"
+EMAIL_HOST="smtp.gmail.com"
+EMAIL_PORT=587
+EMAIL_HOST_USER="eventos"
+EMAIL_HOST_PASSWORD=r"senha"
+EMAIL_USE_TLS=True
+

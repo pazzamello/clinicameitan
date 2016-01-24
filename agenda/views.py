@@ -20,6 +20,7 @@ def adiciona(request):
 			item = form.save(commit=False)
 			item.usuario = request.user
 			item.save()
+			form.save_m2m()
 			return render_to_response("salvo.html", {}) 
 	else:
 		form = FormItemAgenda()
@@ -35,6 +36,7 @@ def item(request,nr_item):
 			item = form.save(commit=False)
 			item.usuario = request.user
 			item.save()
+			form.save_m2m()
 			return render_to_response("salvo.html", {}) 
 	else:
 		form = FormItemAgenda(instance=item)
