@@ -5,6 +5,9 @@ __pycache__/
 # C extensions
 *.so
 
+#swp code from vim or vi
+*.swp 
+
 # Distribution / packaging
 bin/
 build/
