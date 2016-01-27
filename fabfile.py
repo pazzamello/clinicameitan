@@ -28,6 +28,15 @@ def production():
     env.virtual = '/var/www/.virtualenvs/clinicameitan.com.br/bin/activate'
     env.manage = '/srv/clinicameitan.com.br/www/clinicameitan/manage.py'
 
+def development():
+    env.hosts = ['root@cloud419.configrapp.com']
+    env.app_root = '/srv/dev.clinicameitan.com.br/www/clinicameitan'
+    env.git_origin = 'git@github.com:pazzamello/clinicameitan.git'
+    env.git_branch = 'master'
+    env.virtual = '/var/www/.virtualenvs/dev.clinicameitan.com.br/bin/activate'
+    env.manage = '/srv/dev.clinicameitan.com.br/www/clinicameitan/manage.py'
+
+
 
 ##
 ## available commands
@@ -61,4 +70,13 @@ def deploy():
     ## update static media
     command = 'source %s; python %s' % (env.virtual, env.manage)
     run(command + ' collectstatic --noinput')
+
+    ## update database schema
+    command = 'source %s; python %s' % (env.virtual, env.manage)
+    run(command + ' migrate --noinput')
+
+    ## restart uwsgi service
+    run('find %s -name "*.pyc" -delete' % env.app_root)
+    run('/etc/init.d/uwsgi reload clinicameitan.com.br')
+
 

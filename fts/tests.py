@@ -78,6 +78,3 @@ class PollsTest(LiveServerTestCase):
 		# new poll, listed as a clickable link
 		new_poll_links = self.browser.find_elements_by_link_text("How awesome is Test-Driven Development?")
 		self.assertEquals(len(new_poll_links), 1)
-
-
-
