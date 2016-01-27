@@ -25,6 +25,8 @@ def production():
     env.app_root = '/srv/clinicameitan.com.br/www/clinicameitan'
     env.git_origin = 'git@github.com:pazzamello/clinicameitan.git'
     env.git_branch = 'master'
+    env.virtual = '/var/www/.virtualenvs/clinicameitan.com.br/bin/activate'
+    env.manage = '/srv/clinicameitan.com.br/www/clinicameitan/manage.py'
 
 
 ##
@@ -50,4 +52,13 @@ def deploy():
 
     final = time.time()
     puts('execution finished in %.2fs' % (final - start))
+
+    ## update python package
+    #print env.virtual
+    command = 'source %s; cd %s; pip install -r requirements.txt' % (env.virtual, env.app_root)
+    sudo(command, user='www-data')
+
+    ## update static media
+    command = 'source %s; python %s' % (env.virtual, env.manage)
+    run(command + ' collectstatic --noinput')
 

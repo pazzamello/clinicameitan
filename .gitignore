@@ -5,6 +5,8 @@ __pycache__/
 # C extensions
 *.so
 
+clinicaMeiTan/settings.py
+
 #swp code from vim or vi
 *.swp 
 
