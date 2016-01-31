@@ -7,6 +7,8 @@ __pycache__/
 
 clinicaMeiTan/settings.py
 
+db.sqlite3
+
 #swp code from vim or vi
 *.swp 
 

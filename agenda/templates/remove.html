@@ -6,7 +6,7 @@
 <p>{{ item.data }} - {{ item.hora }}</p>
 <pre>{{ item.descricao }}</pre>
 <form action="" method="POST"> 
-	{% csrf_token %}
-	<p><button type="submit">Remover</button> ou <a href="/">Cancelar</a></p>
+    {% csrf_token %}
+    <p><button type="submit">Remover</button> ou <a href="/agenda/lista/">Cancelar</a></p>
 </form>
 {% endblock %}

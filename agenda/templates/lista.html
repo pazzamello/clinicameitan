@@ -3,14 +3,14 @@
 {% block corpo %}
 <ul>
 	<li><a href="/logout/">Logout</a></li>
-	<li><a href="/adiciona/">Adicionar novo item</a></li>
+	<li><a href="/agenda/adiciona/">Adicionar novo item</a></li>
 </ul>
 <ul>
 	{% load static %}
 	{% for item in lista_itens %}
 		<li>
-		<a href="/remove/{{ item.id }}/"><img src="{% static "imagens/lixeira.png" %}"</a>
-			<a href="/item/{{ item.id }}/">{{ item.data|date:'d/m/Y' }} - {{ item.titulo }}</a>
+		<a href="/agenda/remove/{{ item.id }}/"><img src="{% static "img/lixeira.png" %}"</a>
+			<a href="/agenda/item/{{ item.id }}/">{{ item.data|date:'d/m/Y' }} - {{ item.titulo }}</a>
 		</li>
 	{% empty %}
 		<li> Sem itens na lista</li>
