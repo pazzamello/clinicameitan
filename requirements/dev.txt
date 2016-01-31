@@ -7,4 +7,3 @@ paramiko==1.16.0
 pbr==1.8.1
 pycrypto==2.6.1
 selenium==2.49.2
-six==1.10.0
