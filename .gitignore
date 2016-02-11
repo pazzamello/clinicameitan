@@ -6,7 +6,6 @@ __pycache__/
 *.so
 
 clinicaMeiTan/local_settings.py
-clinicaMeiTan/settings.py
 
 db.sqlite3
 
