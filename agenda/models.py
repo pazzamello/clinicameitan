@@ -3,18 +3,18 @@ from django.db import models
 from django.contrib.auth.models import User
 
 class ItemAgenda(models.Model):
-	data = models.DateField()
-	hora = models.TimeField()
-	titulo = models.CharField(max_length=100)
-	descricao = models.TextField()
-	usuario = models.ForeignKey(User)
-	participantes = models.ManyToManyField(User,
-		related_name='item_participantes')
+    data = models.DateField()
+    hora = models.TimeField()
+    titulo = models.CharField(max_length=100)
+    descricao = models.TextField()
+    usuario = models.ForeignKey(User)
+    participantes = models.ManyToManyField(User,
+    related_name='item_participantes')
 
 
-	def __unicode__(self):
-		return u"Titulo: %s Data/Hora:%s / %s" % (
-		self.titulo, self.data, self.hora)
+    def __unicode__(self):
+        return u"Titulo: %s Data/Hora:%s / %s" % (
+        self.titulo, self.data, self.hora)
 
 
 class Phone(models.Model):
@@ -29,6 +29,9 @@ class Phone(models.Model):
     phoneType = models.CharField(max_length=3,choices=PHONE_TYPE_CHOICES, default=CELULAR)
     phoneNumber = models.CharField(max_length=20)
 
+    def __unicode__(self):
+        return u"%s" % (self.phoneNumber)
+
 
 class Document(models.Model):
     CPF = 'CPF'
@@ -42,11 +45,13 @@ class Document(models.Model):
     documentType = models.CharField(max_length=3,choices=DOCUMENT_TYPE_CHOICES, default=CPF)
     documentNumber = models.CharField(max_length=50)
 
+    def __unicode__(self):
+        return u"%s-%s" % (self.documentType, self.documentNumber)
+
 class Person(models.Model):
     firstName = models.CharField(max_length=100)
     surname = models.CharField(max_length=200)
     foneticName = models.CharField(max_length=300)
-    cpf = models.CharField(max_length=11, blank=True)
     street = models.CharField(max_length=500)
     number = models.CharField(max_length=10)
     complement = models.CharField(max_length=50)
@@ -57,6 +62,9 @@ class Person(models.Model):
     birthDate = models.DateField()
     phone = models.ForeignKey(Phone, null=True)
     document = models.ForeignKey(Document, null=True)
+
+    def __unicode__(self):
+        return u"%s-%s" % (self.firstName, self.surname)
 
 class Patient(models.Model):
     person = models.OneToOneField(Person, on_delete=models.CASCADE)
