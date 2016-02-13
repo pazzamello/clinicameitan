@@ -64,7 +64,7 @@ class Person(models.Model):
     document = models.ForeignKey(Document, null=True)
 
     def __unicode__(self):
-        return u"%s-%s" % (self.firstName, self.surname)
+        return u"%s %s" % (self.firstName, self.surname)
 
 class Patient(models.Model):
     person = models.OneToOneField(Person, on_delete=models.CASCADE)
