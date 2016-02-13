@@ -77,6 +77,6 @@ def deploy():
 
     ## restart uwsgi service
     run('find %s -name "*.pyc" -delete' % env.app_root)
-    run('/etc/init.d/uwsgi reload clinicameitan.com.br')
+    run('/etc/init.d/uwsgi reload dev.clinicameitan.com.br')
 
 
