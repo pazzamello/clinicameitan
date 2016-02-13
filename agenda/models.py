@@ -68,7 +68,7 @@ class Person(models.Model):
 
 class Patient(models.Model):
     person = models.OneToOneField(Person, on_delete=models.CASCADE)
-    responsible = models.OneToOneField(Person, related_name='responsible', on_delete=models.SET_NULL, null=True)
+    responsible = models.OneToOneField(Person, related_name='responsible', on_delete=models.SET_NULL, null=True, blank=True)
 
 class HealthProfessional(models.Model):
     person = models.OneToOneField(Person, on_delete=models.CASCADE)
